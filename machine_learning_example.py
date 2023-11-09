@@ -44,8 +44,9 @@ fraud_data = {
 }
 
 # Combine the data into a DataFrame
-data = pd.DataFrame(non_fraud_data)
-data = data.append(pd.DataFrame(fraud_data), ignore_index=True)
+non_fraud_data = pd.DataFrame(non_fraud_data)
+fraud_data = pd.DataFrame(fraud_data)
+data = pd.concat([non_fraud_data, fraud_data])
 data['Fraud'] = np.concatenate([np.zeros(num_non_fraud), np.ones(num_fraud)], axis=0)
 
 # Function to generate unique account numbers

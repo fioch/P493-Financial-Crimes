@@ -1,13 +1,13 @@
 ###---Benford's Law Example---###
 
-##Dataset Creation##
+## Dataset Creation ##
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters
-num_transactions = 30
-fraud_percentage = 0.1
+num_transactions = 1000
+fraud_percentage = 0.5
 num_fraud_transactions = int(num_transactions * fraud_percentage)
 
 # Helper function to generate random amounts with varying orders of magnitude
@@ -38,13 +38,13 @@ df = pd.DataFrame({'Amount': transactions, 'Label': labels})
 df = df.sample(frac=1).reset_index(drop=True)
 
 # Save to CSV
-df.to_csv('credit_card_transactions_byhand.csv', index=False)
+df.to_csv('credit_card_transactions.csv', index=False)
 
-print(df.head())
+print(df)
 
 #-----------------------------------------------------------#
 
-##Detecting Fraudulent Credit Card Transactions##
+## Detecting Fraudulent Credit Card Transactions ##
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import chisquare
@@ -106,7 +106,7 @@ print(df.head())
 
 #-----------------------------------------------------------#
 
-##Evaluating Benford's Law performance##
+## Evaluating Benford's Law performance ##
 from sklearn.metrics import confusion_matrix, classification_report
 
 # Assuming df['Label'] is 'Fraudulent' or 'Non-Fraudulent'
